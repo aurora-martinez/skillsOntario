@@ -1,10 +1,21 @@
 #include <iostream>
 #include <vector>
-#change
+
 int idNumber;
+std::string n, g, b,c,bi,v, t;
+int i;
+bool s;
+std::string type;
+struct ID {
+		std::string type;
+		int idNumber;
+};
+ID id;
+int idtype;
+int idnumber;
 
 class Species {
-private:
+public:
 	std::string name;
 	std::string gender;
 	bool spayed;
@@ -12,24 +23,27 @@ private:
 	std::string colour;
 	std::string birthday;
 	std::string vaccineStatus;
-	struct ID {
-		std::string type;
-		int idNumber;
+	ID identification;
+
+	Species(std::string n, std::string g, bool s, std::string b, std::string c, std::string bi, std::string v, ID id ) {
+		name = n;
+		gender = g;
+		spayed = s;
+		breed = b;
+		colour = c;
+		birthday = bi;
+		vaccineStatus = v;
+		identification = id;
 	};
-public:
-	Species() {
-		name n;
-		gender g;
-		spayed s;
-		breed b;
-		colour c;
-		birthday bi;
-		vaccineStatus v;
-		ID id{
-			type t;
-		idNumber i;
-		}
-	}
+	Species(std::string n, std::string g, bool s, std::string b, std::string c, std::string bi, std::string v ) {
+		name = n;
+		gender = g;
+		spayed = s;
+		breed = b;
+		colour = c;
+		birthday = bi;
+		vaccineStatus = v;
+	};
 };
 
 std::vector <Species> Animals;
@@ -63,11 +77,21 @@ void addAnimal() {
 	std::cin >> idyorn;
 	if (idyorn == 'y') {
 		haveid = true;
+		std::cout << "\nEnter id type: \n1 - Bar Code\n2 - Micro chipped\n: ";
+		std::cin >> g;
+		if (idtype == 1){
+			type = "Bar Code";
+		}
+		else if (idtype == 2){
+			type = "Micro-Chip";
+		}
+		std::cout << "\nEnter ID number: ";
+		std::cin >> idnumber;
+		id = {type, idnumber};
+		Species S = {n,g,sp,b,c,bi,v, id};
 	}
 	else {
 		haveid = false;
+		Species S = {n,g,sp,b,c,bi,v};
 	}
-	std::cout << "\nEnter id type: \n1 - Bar Code\n2 - Micro chipped\n: ";
-	std::cin >> g;
-	{n,g,sp,b,c,bi,v,{t,i}}
 }
